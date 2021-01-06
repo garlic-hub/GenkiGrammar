@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+
+% Add Japanese language and furigana support
+\usepackage{xeCJK}
+\usepackage[overlap]{ruby}
+
+% Adds the adjustwidth command
+\usepackage{changepage}
+
+% Set paragraph auto indent to 0
+\usepackage{parskip}
+
+% Adds 'Set' command for multiple lines in braces
+\usepackage{braket}
+
+% Create a hyperlinked table of contents
+\usepackage{hyperref}
+\hypersetup{
+    linktoc=all % hyperlink both sections and subsections
+}
+
+%%%%%%%%%%% stolen from https://tex.stackexchange.com/a/48549 because soul package was being a pain
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % use normalem to protect \emph
+\newcommand\hl{\bgroup\markoverwith
+    {\textcolor{yellow}{\rule[-.5ex]{1pt}{2.5ex}}}\ULon}
+%%%%%%%%%%%%
+
+% Set font for Japanese
+\setCJKmainfont{IPAexGothic}
+
+% Set font for English
+% \setmainfont{Georgia}
+
+% Configure furigana separation and font size
+\renewcommand{\rubysep}{0.2ex}
+\renewcommand{\rubysize}{0.6}
+
+%%%%%%%%%%%% Convenience commands
+% Creates a new chapter and includes latex from document in 2nd argument
+\newcommand{\inputchapter}[2]{\section{Chapter #1}\input{chapters/#2}}
+% Create a subsection named after argument 1 and auto indents the contents of argument 2
+\newcommand{\sub}[2]{\subsection{#1}{\begin{adjustwidth}{10mm}{0pt}#2\end{adjustwidth}}}
+%%%%%%%%%%%% 
+
+% Disable section and subsection counters
+% \setcounter{secnumdepth}{0}
+
+\title{Genki Grammar}
+
+\begin{document}
+
+% \maketitle
+\tableofcontents
+
+\inputchapter{1}{01.tex}
+\inputchapter{2}{02.tex}
+\inputchapter{3}{03.tex}
+\inputchapter{4}{04.tex}
+
+\end{document}
